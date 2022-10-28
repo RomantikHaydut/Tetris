@@ -7,17 +7,47 @@ public class ShapeController : MonoBehaviour
     public List<Transform> listPiece = new List<Transform>();
 
     bool isMoveableHorizontal = true;
+
+    public bool canRotate;
+
+    float delay;
+    float timer;
+
     private void Start()
     {
-        StartCoroutine(MoveDown());
+        delay = GameManager.Instance.gameSpeed;
+        timer = delay;
+        // StartCoroutine(MoveDown());
+       // StartCoroutine(MoveDownnn());
     }
 
     private void Update()
     {
         HorizontalMovement();
+        MoveDownn();
     }
 
-    IEnumerator MoveDown()
+    /*IEnumerator MoveDownnn()
+    {
+        while (true)
+        {
+            var isMoveable = GameManager.Instance.isInside(NextPointVertical());
+            if (isMoveable)
+            {
+                var delay = GameManager.Instance.gameSpeed;
+                yield return new WaitForSecondsRealtime(delay);
+                transform.position += new Vector3(0, -1, 0);
+
+            }
+            else
+            {
+                break;
+            }
+
+        }
+    }*/
+
+   /* IEnumerator MoveDown()
     {
         while (true)
         {
@@ -53,8 +83,74 @@ public class ShapeController : MonoBehaviour
                 enabled = false;
                 break;
             }
-
+           
         }
+    }*/
+
+    void MoveDownn()
+    {
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                var isMoveable = GameManager.Instance.isInside(NextPointVertical());
+                if (isMoveable)
+                {
+                    transform.position += new Vector3(0, -1, 0);
+                }
+                else
+                {
+                    FindObjectOfType<SpawnManager>().canSpawn = true;
+                    foreach (var piece in listPiece)
+                    {
+                        int x = Mathf.RoundToInt(piece.transform.position.x);
+                        int y = Mathf.RoundToInt(piece.transform.position.y);
+
+                        GameManager.Instance.Grid[x, y] = true;
+
+                    }
+                    GameManager.Instance.RemovePiecesController();
+                    SoundManager.Instance.HitSound();
+                    enabled = false;
+                    return;
+                }
+            }
+        }
+        else
+        {
+            var isMoveable = GameManager.Instance.isInside(NextPointVertical());
+            if (isMoveable)
+            {
+               
+                if (timer <= 0)
+                {
+                    transform.position += new Vector3(0, -1, 0);
+                    timer = delay;
+                }
+                else
+                {
+                    timer -= Time.deltaTime;
+                }
+                
+            }
+            else
+            {
+                FindObjectOfType<SpawnManager>().canSpawn = true;
+                foreach (var piece in listPiece)
+                {
+                    int x = Mathf.RoundToInt(piece.transform.position.x);
+                    int y = Mathf.RoundToInt(piece.transform.position.y);
+
+                    GameManager.Instance.Grid[x, y] = true;
+
+                }
+                GameManager.Instance.RemovePiecesController();
+                SoundManager.Instance.HitSound();
+                enabled = false;
+                return;
+            }
+        }
+        
     }
 
     private List<Vector2> NextPointVertical()
@@ -149,10 +245,12 @@ public class ShapeController : MonoBehaviour
     }
     void Rotate()
     {
+        if (canRotate)
+        {
+            transform.eulerAngles -= new Vector3(0, 0, 90);
+            SoundManager.Instance.RotateSound();
 
-        transform.eulerAngles -= new Vector3(0, 0, 90);
-        SoundManager.Instance.RotateSound();
-        
+        }
     }
 
 

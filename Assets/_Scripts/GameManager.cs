@@ -94,6 +94,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SoundManager.Instance.StartMainSoundtrack();
+        gameSpeedAndTimeText.text = "Difficulty : " + (1 - gameSpeed) * 100 + "\n Next Difficulty : " + (45 - (int)gameTime); // Delete this.
     }
 
     private void Update()
@@ -101,7 +102,7 @@ public class GameManager : MonoBehaviour
         if (SpawnManager.gameStarted)
         {
             // Increase game speed.
-            gameSpeedAndTimeText.text = "Speed : " + gameSpeed + " Timer : " + (int)gameTime; // Delete this.
+            gameSpeedAndTimeText.text = "Difficulty : " + (1 - gameSpeed)*100 + "\n Next Difficulty : " + (45 - (int)gameTime); // Delete this.
             gameTime += Time.deltaTime;
             if ((int)gameTime % diffultyTimer == 0 && gameTime >= diffultyTimer)
             {

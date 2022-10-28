@@ -2622,13 +2622,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shapes:
-  - {fileID: 6295356497171529370, guid: d084cd73568633d4a91df481142f4141, type: 3}
-  - {fileID: 1839357279336917855, guid: bf696c234e6aa7d4385288ac87c102e2, type: 3}
-  - {fileID: 1020226965116554734, guid: 7730c4d4f3feb7d439d273d20db18e77, type: 3}
-  - {fileID: 6563596470667428457, guid: 18e230331e65afa4194f158f1ba53fdd, type: 3}
-  - {fileID: 2536962638611504563, guid: faa50da0d1606d5409b74b0851f7ae85, type: 3}
+  - {fileID: 6295356497171529370, guid: 4ea6df8d8497db8448795c8cb8b8d68f, type: 3}
+  - {fileID: 1839357279336917855, guid: b31a49a624f323c46b285a6f2368c1e4, type: 3}
+  - {fileID: 1020226965116554734, guid: 3c40c544d0771534cba3f60ff5430550, type: 3}
+  - {fileID: 6563596470667428457, guid: cf2d4ec56f1d1dd46a79a13b71bcfed8, type: 3}
+  - {fileID: 2536962638611504563, guid: 7fc2344a77baf074289625953d732e00, type: 3}
   - {fileID: 7520587540855721875, guid: ee1cc5bb4da98c145b0db980c28205ec, type: 3}
-  - {fileID: 2536962638611504563, guid: 090f835a5d7cdb54686c10b4e3d43467, type: 3}
+  - {fileID: 2536962638611504563, guid: 90f9d1448a015764f867ff1a66839858, type: 3}
   canSpawn: 0
 --- !u!1 &1020085299
 GameObject:
@@ -2787,8 +2787,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 450, y: 150}
+  m_AnchoredPosition: {x: 20, y: 40}
+  m_SizeDelta: {x: 550, y: 170}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1133750308
 MonoBehaviour:

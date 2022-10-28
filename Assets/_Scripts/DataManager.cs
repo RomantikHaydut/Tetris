@@ -53,4 +53,11 @@ public class DataManager : MonoBehaviour
             bestScore = data.m_bestScore;
         }
     }
+
+    public void ResetBestScore()
+    {
+        SaveScore(0);
+        LoadScore();
+        FindObjectOfType<ScoreManager>().bestScoreText.text= "YOUR BEST SCORE : " + bestScore;
+    }
 }

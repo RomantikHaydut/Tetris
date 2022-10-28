@@ -12,6 +12,7 @@ public class SpawnManager : MonoBehaviour
 
     public static bool gameOver = false;
 
+
     private void Awake()
     {
         gameStarted = false;
@@ -42,6 +43,12 @@ public class SpawnManager : MonoBehaviour
             int index = Random.Range(0, shapes.Length);
 
             GameObject shape = Instantiate(shapes[index], transform.position, Quaternion.identity);
+           
+
+            if (index != 3)
+            {
+                shape.GetComponent<ShapeController>().canRotate = true;
+            }
 
             GameManager.Instance.objectList.Add(shape.GetComponent<ShapeController>());
 
